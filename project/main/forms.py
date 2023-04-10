@@ -12,3 +12,7 @@ class AlgoSelectorForm(forms.Form) :
     
     algo_name =  forms.CharField(label = "Select an Algorithm to use " , widget = forms.RadioSelect(choices=ALGO_VALUES))
     document_text = forms.CharField(label = "Enter the Text to Summarize " , widget=forms.Textarea(attrs={"rows": 10 , "cols" : 10}))
+
+
+class ChangeAlgoForm(forms.Form) : 
+    algo_name =  forms.CharField(label = "Change Algorithm  " , widget = forms.RadioSelect(choices=ALGO_VALUES))
