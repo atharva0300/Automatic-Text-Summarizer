@@ -31,20 +31,28 @@ def try_view(request) :
             algo_name = ""
 
             if (selected is 1) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file 
+                print('inside if 1')
+                from .algo import kl_sum
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output1.txt"
                 algo_name = "KL Sum ALgorithm"    
+
             elif (selected is 2) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file 
+                print('inside if 2')
+                from .algo import lexrank
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
                 algo_name = "LexRank Algorithm"
             elif (selected is 3) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file
+                print('inside if 3 ') 
+                from .algo import lsa
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output3.txt"
                 algo_name = "LSA Algorithm"
 
-
-            
-
-            directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output.txt"
-
-            # executing the kl_sum python file 
-            # importing the kl_sum.py file 
-            from .algo import kl_sum
 
             # after the ewxecution, get the output file and display it 
             file1 = open(directory , 'r')
@@ -101,24 +109,38 @@ def change_algo(request) :
 
             algo_name = ""
 
+            directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output.txt"
+
+
             if (selected is 1) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file 
+                print('inside if 1')
+                from .algo import kl_sum
                 algo_name = "KL Sum ALgorithm"    
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output1.txt"
+
             elif (selected is 2) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file 
+                print('inside if 2')
+                from .algo import lexrank
+
                 algo_name = "LexRank Algorithm"
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
+
             elif (selected is 3) : 
+                # executing the kl_sum python file 
+                # importing the kl_sum.py file 
+                print('inside if 3')
+                from .algo import lsa
                 algo_name = "LSA Algorithm"
+                directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output3.txt"
 
 
             print('Algo name : ' , algo_name)
 
             
-
-            directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output.txt"
-
-            # executing the kl_sum python file 
-            # importing the kl_sum.py file 
-            from .algo import kl_sum
-
             # after the ewxecution, get the output file and display it 
             file1 = open(directory , 'r')
             document_output = file1.read()
@@ -130,10 +152,10 @@ def change_algo(request) :
             form2 = ChangeAlgoForm()
             # initializing a form to change the algo
 
-            directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
+            directory2  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
             
             # opening the file 
-            file1 = open(directory , "r")
+            file1 = open(directory2 , "r")
             document_text = file1.read()
 
             total = {

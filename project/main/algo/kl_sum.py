@@ -35,6 +35,18 @@ Machine learning algorithms are typically created using frameworks that accelera
 """
 
 
+def write(directory , file , summary) : 
+    with open(os.path.join(directory , file) ,  'w') as file2 : 
+        for sentence in summary:
+            print(sentence)
+
+            # writing into the file2
+            file2.write(str(sentence))
+    
+    return True
+
+def caller(write , directory , file , summary) : 
+    return write(directory , file , summary)
 
 
 def kl_sum() : 
@@ -64,17 +76,15 @@ def kl_sum() :
     print("Sumary : " , summary)
     print("summary type : " , type(summary))
 
-    file = "output.txt"
+    file = "output1.txt"
 
     directory = os.getcwd()
     print("current working drectory : " , directory)
 
-    with open(os.path.join(directory , file) ,  'w') as file2 : 
-        for sentence in summary:
-            print(sentence)
+    result = caller(write , directory , file , summary)
+    print(result)
 
-            # writing into the file2
-            file2.write(str(sentence))
+    
 
         
 
