@@ -18,6 +18,7 @@ Automatic Text Summarizer with various approaches in NLP and Django
  - [ ] Django REST Framework 
 
 ### Improvements for the future 
+ - [ ] Inputs not taken for the document text 
  - [ ] Integrating with Postgresql
  - [ ] API creation with DRF
  - [ ] Analysing the performance of the results of all the algos
