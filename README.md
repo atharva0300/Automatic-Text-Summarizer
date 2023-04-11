@@ -2,7 +2,6 @@
 Automatic Text Summarizer with various approaches in NLP and Django
 
 ### Approahces used 
- - [x] Text Summarization with Sumy
  - [x] LexRank
  - [x] LSA (Latent semantic analysis)
  - [x] KL-Sum
