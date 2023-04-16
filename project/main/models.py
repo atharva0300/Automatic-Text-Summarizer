@@ -5,4 +5,7 @@ from django.db import models
 class AlgoModel(models.Model) : 
     algo_name = models.CharField(max_length=100)
     document_text = models.CharField(max_length=1000000)
-    
+
+
+class AboutModel(models.Model) : 
+    image = models.ImageField(upload_to='img')

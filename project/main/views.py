@@ -181,3 +181,9 @@ def change_algo(request) :
         return render(request , 'try.html' , {})
 
 
+def about(request) : 
+    if request.method=='GET' : 
+        # hadnling the get request here
+        print('Inside the about get')
+
+        return render(request , 'about.html' , {})

@@ -40,8 +40,7 @@
     
     </head>
     <body>
-        
-    <div class = "container w-50 h-75">
+    <div class = "container w-50 h-100">
         
 
         
@@ -52,7 +51,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Algorithm Selected</h5>
                   <p class="card-text">{{ total.algo_name }}</p>
-                  <form method = "post" action = "{% url 'change_algo' %}">
+                  <form method = "post" action = "{% url 'change_algo' %}" class = "form-group">
                     {% csrf_token %}
 
                     {{ total.form.as_p }}
@@ -74,12 +73,12 @@
         </div>
         {% else %}
 
-        <form class = "algo_form" method = "post" action = "{%  url 'try' %}">
-            <div class="card">
+        <form class = "algo_form" method = "post" action = "{%  url 'try' %}" class ="form-group">
+            <div class="card" style = "height :750; width : 1000px;">
                 <h5 class="card-header">Please provide the Inputs</h5>
-            {% csrf_token %}
-    
-            {{ form.as_p }}
+                {% csrf_token %}
+                    
+                {{ form }}
             <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </div>
         </form>
