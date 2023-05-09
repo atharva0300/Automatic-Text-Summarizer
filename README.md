@@ -1,6 +1,7 @@
 # Automatic-Text-Summarizer
 Automatic Text Summarizer with various approaches in NLP and Django
 
+
 ### Approahces used 
  - [x] LexRank
  - [x] LSA (Latent semantic analysis)
@@ -33,3 +34,11 @@ Automatic Text Summarizer with various approaches in NLP and Django
  - [ ] The form field of the input algo and text area is not styled properly 
  - [ ] About Page is blank
  - [ ] Slow loading of the algo's ( add Redis for caching ? )
+
+### New Ideas 
+ - [ ] Uploading PDF file, extracting text from the file and summarizing it
+ - [ ] Uploading Image file, extracting text from the file and summarizing it ( optional )
+ - [ ] Obtaining Abbreviation from the document
+ - [ ] Knowledge Graphs ( https://www.analyticsvidhya.com/blog/2019/10/how-to-build-knowledge-graph-text-using-spacy/ )
+ - [ ] Words Cloud 
+ - [ ] Text Evaluation ( metrics )
