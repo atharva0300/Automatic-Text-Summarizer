@@ -1,0 +1,94 @@
+{% include 'base.html' %}
+
+
+<html>
+<head>
+    <style>
+        html,
+            body {
+            height: 100%;
+            background-color: #0b0c10;
+            }
+            body {
+            color: #66fcf1;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,.5);
+            }
+
+            .outer-container{
+                display : flex;
+                flex-direction : column;
+                justify-content : center;
+                align-items :center;
+                position: absolute;
+                left : 540px;
+                top : -350px;
+                width : 900px;
+                height : 1200px;
+            }
+
+            .question-container{
+                background : #1f2833;
+                color : #45a29e;
+                width : 900px;
+                height : 100px;
+                border-radius : 10px;
+                display : flex;
+                flex-direction : column;
+                justify-content : center;
+                align-items : center;
+                border : 2px solid #45a29e;
+            }
+
+            .question-container > p{
+                font-size : 36px;
+            }
+
+            .options-container{
+                width : 900px;
+                height : 300px;
+                display : flex;
+                flex-direction : column;
+                justify-content : center;
+                align-items : flex-start;
+                border-radius : 10px;
+                border : 2px solid #45a29e;
+                color : #45a29e;
+                font-size : 24px;
+            }
+
+
+            .mybutton{
+                background : #1f2833;
+                color : #45a29e;
+            }
+
+            .mybutton:hover{
+                background : #45a29e;
+
+            }
+
+
+    </style>
+</head>
+
+
+<body>
+    <div class = "outer-container">
+        <div class = "question-container">
+            <p>What do you want to do ? </p>
+        </div >
+
+        <div class = "options-container">
+            <!-- Display the django form here -->
+            {{ form.as_p }}
+        </div>
+        
+        <div class = "submit-container">
+            <input type = "submit" value = "Let's Go!" class = "btn btn-lg btn-primary mybutton" />
+        </div>
+    </div>
+
+</body>
+
+</html>

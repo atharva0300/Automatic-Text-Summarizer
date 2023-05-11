@@ -30,3 +30,16 @@ class ChangeAlgoForm(forms.Form) :
         },
         choices=ALGO_VALUES
         ))
+
+OPTIONS_VALUES = [
+    ('1' , 'Extract text from PDF and summarize'),
+    ('2' , 'Summarize input text')
+]
+
+class OptionsSelectorForm(forms.Form) : 
+    option = forms.CharField(label = "" , widget = forms.RadioSelect(
+        choices=OPTIONS_VALUES,
+        attrs={
+            'style' : 'display : flex; flex-direction : column; justify-content : center; align-items : flex-start;' 
+        }
+    ))

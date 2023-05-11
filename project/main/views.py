@@ -5,8 +5,12 @@ from django.shortcuts import render
 
 
 # importing the algo selector form
-from .forms import AlgoSelectorForm, ChangeAlgoForm
+from .forms import AlgoSelectorForm, ChangeAlgoForm, OptionsSelectorForm
 
+# importing rest frameork API views 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 
 # Create your views here.
@@ -75,10 +79,10 @@ def try_view(request) :
 
 
 
-            return render(request , 'try.html' , {'total' : total})
+            return render(request , 'summarizer.html' , {'total' : total})
     
         else : 
-            return render(request , 'try.html' , {"algo_name" : "Form is not valid"})
+            return render(request , 'summarizer.html' , {"algo_name" : "Form is not valid"})
     
     elif request.method=='GET' : 
         form = AlgoSelectorForm()
@@ -86,7 +90,7 @@ def try_view(request) :
         # getting the form layout 
         # and passing it to the html page 
 
-        return render(request , 'try.html' , {'form' : form})
+        return render(request , 'summarizer.html' , {'form' : form})
 
 
 def change_algo(request) : 
@@ -168,17 +172,17 @@ def change_algo(request) :
 
 
 
-            return render(request , 'try.html' , {'total' : total})
+            return render(request , 'summarizer.html' , {'total' : total})
 
         else : 
             print('Form is not Valid')
             # if the form is not valid then 
-            return render(request , 'try.html' , {})
+            return render(request , 'summarizer.html' , {})
 
     elif request.method=='GET' : 
         print('GET method received')
 
-        return render(request , 'try.html' , {})
+        return render(request , 'summarizer.html' , {})
 
 
 def about(request) : 
@@ -187,3 +191,14 @@ def about(request) :
         print('Inside the about get')
 
         return render(request , 'about.html' , {})
+    
+
+def options_view(request) : 
+    if request.method =='GET' : 
+        print('Handling the get request')
+
+        # obtain an empty form and display it
+        optionsForm = OptionsSelectorForm()
+        
+
+        return render(request,  'options.html' , {'form' : optionsForm})
