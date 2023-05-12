@@ -1,7 +1,7 @@
 {% include 'base.html' %}
 
-
 <html>
+
 <head>
     <style>
         html,
@@ -74,36 +74,36 @@
                 background : #45a29e;
 
             }
-
-
     </style>
+
 </head>
 
+    <body>
 
-<body>
-    <div class = "outer-container">
-        <div class = "question-container">
-            <p>{{ heading  }}</p>
-        </div >
+        <div class = "outer-container">
+            <div class = "question-container">
+                <p>{{ heading  }}</p>
+            </div >
 
-        <form class = "form-group" method = "post" action = {% url 'options' %} >
-            <div class = "options-container">
-                <!-- inserting the csrf token -->
-                {% csrf_token %}
-                
-                <!-- Display the django form here -->
-                {{ form }}
+            <form method = "POST" action = {% url 'extractPDF' %} >
+                <div class = "options-container">
+                    <!-- inserting the csrf token -->
+                    {% csrf_token %}
+                    
+                    <!-- Display the django form here -->
+                    {{ form }}
+                    
+                    
+                </div>
 
-               
-            </div>
+                <div class = "submit-container" style = "margin-top : 50px;">
+                    <input type = "submit" class = "btn btn-lg btn-primary mybutton" value = "Let's Go!" />
+                </div>
 
-            <div class = "submit-container" style = "margin-top : 50px;">
-                <input type = "submit" class = "btn btn-lg btn-primary mybutton" value = "Let's Go!" />
-            </div>
-        </form>
-       
+            </form>
+
     </div>
 
-</body>
+    <body>
 
 </html>

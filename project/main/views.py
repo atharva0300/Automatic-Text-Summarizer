@@ -1,17 +1,22 @@
 from django.shortcuts import render
+import matplotlib.pyplot as plt
 
 from django.http import HttpResponse
-from django.shortcuts import render
 
 
 # importing the algo selector form
-from .forms import AlgoSelectorForm, ChangeAlgoForm, OptionsSelectorForm
+from .forms import AlgoSelectorForm, ChangeAlgoForm, OptionsSelectorForm, PDFForm, CloudAbbreviation
 
 # importing rest frameork API views 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+# from algo folder calling all the algorithms 
+from .algo import word_cloud, lsa, lexrank, kl_sum
+
+
+fileName = ""
 
 # Create your views here.
 def home_view(request) :
@@ -27,12 +32,20 @@ def try_view(request) :
         if form.is_valid() : 
             selected = form.cleaned_data.get("algo_name")
 
+            print('form : ' , form.cleaned_data)
+
+
             print(selected)
             selected = int(selected)
 
             document_text = form.cleaned_data.get("document_text")
 
             algo_name = ""
+            
+            # create a text file 
+            f = open('./project/main/documents/one.txt' , 'w')
+            f.write(document_text)
+            f.close()
 
             if (selected is 1) : 
                 # executing the kl_sum python file 
@@ -46,7 +59,7 @@ def try_view(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 2')
-                from .algo import lexrank
+                fileName = lexrank.execute()
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
                 algo_name = "LexRank Algorithm"
             elif (selected is 3) : 
@@ -69,11 +82,15 @@ def try_view(request) :
             form2 = ChangeAlgoForm()
             # initializing a form to change the algo
 
+            convertionForm = CloudAbbreviation()
+
+
             total = {
                 'algo_name' : algo_name,
                 'document_text' : document_text,
                 'document_output' : document_output,
-                'form' : form2
+                'form' : form2,
+                'form2' : convertionForm
             }
 
 
@@ -201,4 +218,95 @@ def options_view(request) :
         optionsForm = OptionsSelectorForm()
         
 
-        return render(request,  'options.html' , {'form' : optionsForm})
+        return render(request,  'options.html' , {'form' : optionsForm , 'heading' : 'What do want to do?' , 'action' : 'options'})
+    
+    elif request.method=='POST' : 
+        print('Handling the post request')
+
+        # obtain the contents of the post form 
+        receivedForm = OptionsSelectorForm(request.POST)
+
+        print('received Form : ' , receivedForm)
+
+        if receivedForm.is_valid() : 
+            option = receivedForm.cleaned_data.get('option')
+
+            print('option selected : ' , option)
+
+            if(option=='1') : 
+                # extracting the text from the pdf and then summariing the text 
+                print('inside option 1')
+                
+                pdfForm = PDFForm()
+                return render(request , 'extractpdf.html' , {'form' : pdfForm , 'heading' : 'Upload a PDF File'})
+
+            elif(option=='2') :
+                # sumzrization from an input text
+                print('inside option 2')
+
+                summarizer = AlgoSelectorForm()
+
+                return render(request , 'summarizer.html' , {'form' : summarizer})
+        
+  
+            
+
+
+
+
+def extractPDF_view(request) : 
+    if request.method == 'GET' : 
+        print('inside the get method of the extract pdf')
+
+        return render(request , 'summarizer.html' , {'form' : ''} )
+    
+    elif request.method =='POST' : 
+        print('handling the file')
+
+        pdfForm = PDFForm(request.POST)
+
+        print('pdfForm : '  , pdfForm)
+
+        if pdfForm.is_valid () : 
+            print('the pdf form is valid')
+            file  = pdfForm.cleaned_data.get('file')
+
+            print('file : ' , file)
+
+            return render(request , 'summarizer.html'  , {'form'  : ''})
+        
+
+
+def convertionView(request) : 
+    print('inside the convertion view')
+
+    if request.method=='POST': 
+        print('inside the post of convertionView')
+
+        receivedForm = CloudAbbreviation(request.POST)
+
+        if receivedForm.is_valid() : 
+            print('form is valid')
+
+            option = receivedForm.cleaned_data.get('option')
+
+            if( option=='1') : 
+                print('selected option 1')
+
+                # calling the cloud program, passing teh output file in the program and taking the output and pasting it on the page 
+                result = word_cloud.execute('output1.txt')
+
+                # obtaining the image from the stored file 
+                if result : 
+                    print('the image file has been saved')
+
+                    # sending the file to the website
+
+                    
+                else : 
+                    print('The image file has not been saved')
+
+
+
+            elif (option=='2') : 
+                print('selectedd option 2')

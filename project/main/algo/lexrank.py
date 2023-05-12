@@ -22,7 +22,7 @@ nltk.download('punkt')
 
 
 
-def lexrank() : 
+def execute() : 
     directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
     # opening the file 
     file1 = open(directory , "r")
@@ -45,8 +45,6 @@ def lexrank() :
     print()
     print("The output of the Algorithm is : ")
 
-    output_text = ""
-
     print("Sumary : " , summary)
     print("summary type : " , type(summary))
 
@@ -54,6 +52,8 @@ def lexrank() :
 
     directory = os.getcwd()
     print("current working drectory : " , directory)
+
+    print('file : ' , os.path.join(directory , file))
 
     with open(os.path.join(directory , file) ,  'w') as file2 : 
         for sentence in summary:
@@ -63,4 +63,4 @@ def lexrank() :
             file2.write(str(sentence))
 
 
-lexrank()
+    return 'output2.txt'

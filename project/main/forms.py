@@ -40,6 +40,25 @@ class OptionsSelectorForm(forms.Form) :
     option = forms.CharField(label = "" , widget = forms.RadioSelect(
         choices=OPTIONS_VALUES,
         attrs={
-            'style' : 'display : flex; flex-direction : column; justify-content : center; align-items : flex-start;' 
+            'class' : 'form-check-inline options-input'
         }
+    ))
+
+
+
+class PDFForm(forms.Form) : 
+    file = forms.FileField()
+
+
+CONVERTION = [
+    ('1' , 'Create a Word Cloud'),
+    ('2' , 'Find Abbreviations')
+]
+
+class CloudAbbreviation(forms.Form) : 
+    option = forms.CharField(label = "" , widget = forms.RadioSelect(
+        attrs = {
+            'class' : 'form-check-inline'
+        },
+        choices = CONVERTION
     ))
