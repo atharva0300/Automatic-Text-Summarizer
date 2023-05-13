@@ -3,6 +3,7 @@ from django.urls import path
 from .views import home_view , try_view, change_algo , about , options_view, extractPDF_view , convertionView
 from . import views
 
+
 urlpatterns = [
     path('' , view=home_view , name = 'home_view'),
     path('summarizer/' , view = try_view , name = 'summarizer'),
@@ -14,3 +15,4 @@ urlpatterns = [
 
 ]
 
+# urlpatterns += patterns('django.views.static',(r'^media/(?P<path>.*)','serve',{'document_root':settings.MEDIA_ROOT}), )

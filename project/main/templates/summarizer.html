@@ -1,4 +1,7 @@
 {% include 'base.html' %}
+{% load static %} 
+
+
 
 <html>
     <head>
@@ -117,8 +120,20 @@
                     <p class="card-text">{{ total.document_output }}</p>
                     <a href="{% url 'home_view' %}" class="btn btn-primary">Homepage</a>
                   </div>
+
+
+                  <div class="card-body">
+                        <h5>Abbreviations : </h5>
+                        <h6>{{total.outputAbbreviation}}</h6>
+                  </div>
             </div>
         </div>
+
+        <div>
+            <img src = {% static 'cloudImage.png' %} alt = "cloud image" stlye = "width : 500px; height : 500px;" />
+        </div>
+
+
         {% else %}
 
         <form class = "algo_form" method = "post" action = "{%  url 'summarizer' %}" class ="form-group">

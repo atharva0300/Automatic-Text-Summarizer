@@ -133,3 +133,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+MEDIA_ROOT = '/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/static'
+MEDIA_URL = "http://localhost:8000/static/"

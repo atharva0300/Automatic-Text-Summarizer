@@ -1,6 +1,13 @@
-BFS is one of the traversing algorithm used in graphs. This algorithm is implemented
-using a queue data structure. In this algorithm, the main focus is on the vertices of
-the graph. Select a starting node or vertex at first, mark the starting node or vertex
-as visited and store it in a queue. Then visit the vertices or nodes which are adjacent
-to the starting node, mark them as visited and store these vertices or nodes in a queue.
-Repeat this process until all the nodes or vertices are completely visited.
+That manifests in kale salads and juice cleanses and plant-based protein, but also in another cult-ish sect, Silicon Valley, with its obsession with self-optimization through biohacking and intermittent fasting. The Source and restaurants like it are also part of why fresh produce is now more varied and widely available throughout the United States.
+
+For evidence of how cults and religious sects have shaped our diets, look no further than the aisles at Whole Foods. Yogi Tea is a brand founded by Yogi Bhajan, a Sihk Kundalini master and self-proclaimed guru who rose to prominence before the Source Family. That dense sprouted-grain bread? A legacy of Edmond Bordeaux Szekely, who falsely claimed to have unearthed texts in the Vatican archive in which no less than Jesus himself told us how we should eat. The humble graham cracker? A nod to Sylvester Graham, the 19th-century Presbyterian minister obsessed with the idea that whole grains have the power to put an end to masturbation. And when you enjoy a natural wine, thank Rudolf Steiner, an Austrian occultist, supposed clairvoyant, and inventor of biodynamic agriculture in the early 20th century.
+
+The Source Family borrowed from all of the above, while adding a few ingredients of their own. The story of who they were and how their ideology wound up on our plates is, to quote Father Yod, “Far-fucking-out.”
+
+At the tail end of the 1960s, the fabric of traditional American social structures was in flux and the personal life of a man named Jim Baker was in shambles. At 47, he had already lived several lives. He had fought the Nazis in World War II as a U.S. Marine, went to Hollywood to become a stuntman, and made a small fortune from two restaurants, the Aware Inn and the Old World.
+
+He had also developed a taste for serial adultery, leading to his second messy divorce, as well as scuffles with jealous husbands and boyfriends. In the process, he’d killed two men, supposedly with jujitsu chops to the neck—though the second case also involved a bullet to the skull. By the mid-1960s, after a stint in prison for manslaughter, he was a wreck, showing up drunk and high to pillage the cash from his own restaurant’s coffers.
+
+By then, the once wildly successful and widely known restaurateur had lost the Aware Inn to his ex-wife and the Old World to disgruntled investors. Perhaps that is why Jim Baker decided to become someone else entirely.
+
+As Baker hit rock-bottom, he developed a growing interest in the teachings of Manly P. Hall, the founder of the Philosophical Research Society (an esoteric and metaphysical organization that still operates today), and Yogi Bhajan, who was rapidly gaining followers in California. He foreswore alcohol, meditated intensely, and became increasingly obsessed with the concept of personal transformation through diet and exercise.

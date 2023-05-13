@@ -13,7 +13,9 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # from algo folder calling all the algorithms 
-from .algo import word_cloud, lsa, lexrank, kl_sum
+from .algo import word_cloud, lsa, lexrank, kl_sum, abbreviation
+
+
 
 
 fileName = ""
@@ -55,6 +57,21 @@ def try_view(request) :
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output1.txt"
                 algo_name = "KL Sum ALgorithm"    
 
+                # generating word cloud from the text 
+                result  = word_cloud.execute(document_text)
+
+                if result : 
+                    print('The image file has been created')
+                    # opening the directory file and displaying the image 
+                    cloudImagePath = result
+                    print('cloudImagePath : ' , cloudImagePath)
+                else : 
+                    print('Failed to create an image file')
+
+                
+                outputAbbreviation = abbreviation.execute(document_text)
+
+
             elif (selected is 2) : 
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
@@ -62,6 +79,13 @@ def try_view(request) :
                 document_output = lexrank.execute(document_text , True)
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
                 algo_name = "LexRank Algorithm"
+
+                # generating word cloud from the text 
+                result  = word_cloud.execute(document_text)
+                cloudImagePath = result
+
+                outputAbbreviation = abbreviation.execute(document_text)
+
             elif (selected is 3) : 
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file
@@ -69,6 +93,12 @@ def try_view(request) :
                 document_output = lsa.execute(document_text , True)
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output3.txt"
                 algo_name = "LSA Algorithm"
+
+                # generating word cloud from the text 
+                result  = word_cloud.execute(document_text)
+                cloudImagePath = result
+
+                outputAbbreviation = abbreviation.execute(document_text)
 
 
             form2 = ChangeAlgoForm()
@@ -82,7 +112,9 @@ def try_view(request) :
                 'document_text' : document_text,
                 'document_output' : document_output,
                 'form' : form2,
-                'form2' : convertionForm
+                'form2' : convertionForm,
+                'cloudImagePath' : cloudImagePath,
+                'outputAbbreviation' : outputAbbreviation
             }
 
             return render(request , 'summarizer.html' , {'total' : total})
