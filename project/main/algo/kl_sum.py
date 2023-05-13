@@ -35,21 +35,24 @@ Machine learning algorithms are typically created using frameworks that accelera
 """
 
 
-def write(directory , file , summary) : 
+def write(directory , file , summary) :
+
+    output_text = "" 
     with open(os.path.join(directory , file) ,  'w') as file2 : 
         for sentence in summary:
             print(sentence)
 
+            output_text = output_text + str(sentence)
             # writing into the file2
             file2.write(str(sentence))
     
-    return True
+    return output_text
 
 def caller(write , directory , file , summary) : 
     return write(directory , file , summary)
 
 
-def kl_sum() : 
+def execute(document_text , isText) : 
     directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
     # opening the file 
     file1 = open(directory , "r")
@@ -61,11 +64,14 @@ def kl_sum() :
     print(document)
 
     # For Strings
-    parser=PlaintextParser.from_string(document,Tokenizer("english"))
+    parser=PlaintextParser.from_string(document_text,Tokenizer("english"))
     # Using KL
     summarizer = KLSummarizer()
     #Summarize the document with 4 sentences
-    summary = summarizer(parser.document,4)
+
+    # number of sentences 
+    numberOfSentences = len(document_text.split('.'))/2
+    summary = summarizer(parser.document , numberOfSentences)
 
     print()
     print()
@@ -84,8 +90,7 @@ def kl_sum() :
     result = caller(write , directory , file , summary)
     print(result)
 
+    return result
     
 
         
-
-kl_sum()

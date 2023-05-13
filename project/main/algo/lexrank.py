@@ -22,7 +22,7 @@ nltk.download('punkt')
 
 
 
-def execute() : 
+def execute(document_text , isText ) : 
     directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
     # opening the file 
     file1 = open(directory , "r")
@@ -34,12 +34,15 @@ def execute() :
     print(document)
 
 
-    parser = PlaintextParser.from_string(document,Tokenizer("english"))
+    parser = PlaintextParser.from_string(document_text,Tokenizer("english"))
 
     # Using LexRank
     summarizer = LexRankSummarizer()
     #Summarize the document with 2 sentences
-    summary = summarizer(parser.document, 2)
+
+    # number of sentences 
+    numberOfSentences = len(document_text.split('.'))/2
+    summary = summarizer(parser.document , numberOfSentences)
 
     print()
     print()
@@ -55,12 +58,15 @@ def execute() :
 
     print('file : ' , os.path.join(directory , file))
 
+    output_text = ""
+
     with open(os.path.join(directory , file) ,  'w') as file2 : 
         for sentence in summary:
             print(sentence)
+            output_text = output_text + str(sentence)
 
             # writing into the file2
             file2.write(str(sentence))
 
 
-    return 'output2.txt'
+    return output_text

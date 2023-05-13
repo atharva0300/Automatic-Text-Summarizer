@@ -85,7 +85,7 @@
                 <p>{{ heading  }}</p>
             </div >
 
-            <form method = "POST" action = {% url 'extractPDF' %} >
+            <form method = "POST" action = {% url 'extractPDF' %} enctype="multipart/form-data" >
                 <div class = "options-container">
                     <!-- inserting the csrf token -->
                     {% csrf_token %}

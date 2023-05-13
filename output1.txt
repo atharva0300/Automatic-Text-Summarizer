@@ -1,1 +1,1 @@
-asdasd
+BFS is one of the traversing algorithm used in graphs.This algorithm is implemented using a queue data structure.In this algorithm, the main focus is on the vertices of the graph.

@@ -51,7 +51,7 @@ def try_view(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 1')
-                from .algo import kl_sum
+                document_output = kl_sum.execute(document_text , True)
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output1.txt"
                 algo_name = "KL Sum ALgorithm"    
 
@@ -59,25 +59,17 @@ def try_view(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 2')
-                fileName = lexrank.execute()
+                document_output = lexrank.execute(document_text , True)
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
                 algo_name = "LexRank Algorithm"
             elif (selected is 3) : 
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file
                 print('inside if 3 ') 
-                from .algo import lsa
+                document_output = lsa.execute(document_text , True)
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output3.txt"
                 algo_name = "LSA Algorithm"
 
-
-            # after the ewxecution, get the output file and display it 
-            file1 = open(directory , 'r')
-            document_output = file1.read()
-            # reading all the lines
-
-            # execute the python file 
-            print(document_output)
 
             form2 = ChangeAlgoForm()
             # initializing a form to change the algo
@@ -92,9 +84,6 @@ def try_view(request) :
                 'form' : form2,
                 'form2' : convertionForm
             }
-
-
-
 
             return render(request , 'summarizer.html' , {'total' : total})
     
@@ -122,6 +111,8 @@ def change_algo(request) :
 
         if form.is_valid() : 
 
+            print('form : ' , form)
+
             selected = form.cleaned_data.get('algo_name')
         
             print('Algo Changed to : ' , selected)
@@ -137,7 +128,7 @@ def change_algo(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 1')
-                from .algo import kl_sum
+                kl_sum.execute()
                 algo_name = "KL Sum ALgorithm"    
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output1.txt"
 
@@ -145,7 +136,7 @@ def change_algo(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 2')
-                from .algo import lexrank
+                lexrank.execute()
 
                 algo_name = "LexRank Algorithm"
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output2.txt"
@@ -154,7 +145,7 @@ def change_algo(request) :
                 # executing the kl_sum python file 
                 # importing the kl_sum.py file 
                 print('inside if 3')
-                from .algo import lsa
+                lsa.execute()
                 algo_name = "LSA Algorithm"
                 directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/algo/output3.txt"
 
@@ -263,7 +254,7 @@ def extractPDF_view(request) :
     elif request.method =='POST' : 
         print('handling the file')
 
-        pdfForm = PDFForm(request.POST)
+        pdfForm = PDFForm(request.FILES)
 
         print('pdfForm : '  , pdfForm)
 
@@ -273,7 +264,13 @@ def extractPDF_view(request) :
 
             print('file : ' , file)
 
+            # pass the file in the summarizer function 
+            
+
             return render(request , 'summarizer.html'  , {'form'  : ''})
+    
+        else :
+            print("The pdfFrom is not valid")
         
 
 

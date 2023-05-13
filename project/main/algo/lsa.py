@@ -20,7 +20,7 @@ import nltk
 nltk.download('punkt')
 
 
-def lsa() : 
+def execute(document_text , isText ) : 
 
     directory  = "/home/atharva007/Documents/GitHub/Automatic-Text-Summarizer/project/main/documents/one.txt"
     # opening the file 
@@ -33,14 +33,16 @@ def lsa() :
     print(document)
 
 
-    parser = PlaintextParser.from_string(document,Tokenizer("english"))
+    parser = PlaintextParser.from_string(document_text,Tokenizer("english"))
 
 
 
     summarizer_lsa = LsaSummarizer()
 
-    summary =summarizer_lsa(parser.document,2)
+    # number of words inthe document 
+    numberOfSentences = len(document_text.split('.'))/2
 
+    summary =summarizer_lsa(parser.document ,numberOfSentences)
     for sentence in summary:
         print(sentence)
 
@@ -59,12 +61,24 @@ def lsa() :
     directory = os.getcwd()
     print("current working drectory : " , directory)
 
+    output_text = ""
+
+    """
     with open(os.path.join(directory , file) ,  'w') as file2 : 
         for sentence in summary:
             print(sentence)
 
+            output_text = output_text + sentence
+
             # writing into the file2
             file2.write(str(sentence))
 
+    """
 
-lsa()
+
+    for sentence in summary : 
+        print(sentence )
+
+        output_text = output_text + str(sentence)
+
+    return output_text
